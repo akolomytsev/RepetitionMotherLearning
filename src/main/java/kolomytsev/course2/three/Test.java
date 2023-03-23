@@ -37,5 +37,8 @@ public class Test {
             mapa.put(word, count++);
         }
         System.out.print(mapa);
+
+
+
     }
 }
