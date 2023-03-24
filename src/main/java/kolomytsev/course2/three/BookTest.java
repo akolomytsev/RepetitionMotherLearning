@@ -2,7 +2,13 @@ package kolomytsev.course2.three;
 
 public class BookTest {
     public static void main(String[] args) {
-        TelephoneBook.getInstance();
+        TelephoneBook telephoneBook = TelephoneBook.getInstance();
+
+        telephoneBook.add("Иванов", "89509592387");
+        telephoneBook.add("Иванов", "89509592388");
+        telephoneBook.add("Иванов", "89509592389");
+        telephoneBook.add("Иванов", "89509592390");
+        System.out.println(telephoneBook.get("Иванов"));
     }
 
 }

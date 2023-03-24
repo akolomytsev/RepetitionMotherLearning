@@ -10,14 +10,15 @@ public class TelephoneBook {
         telephone = new HashMap<>();
     }
     // пояснения
-    public Set<String> get(String name){
-        return telephone.get(name);
-    }
+
     public static TelephoneBook getInstance() {
         if (instance == null){
             instance = new TelephoneBook();
         }
         return instance;
+    }
+    public Set<String> get(String name){
+        return telephone.get(name);
     }
 
     public void add(String name, String number){
