@@ -9,6 +9,11 @@ public class BookTest {
         telephoneBook.add("Иванов", "89509592389");
         telephoneBook.add("Иванов", "89509592390");
         System.out.println(telephoneBook.get("Иванов"));
+        telephoneBook.add("Петров", "89509592390");
+        telephoneBook.add("Петров", "89509592390");
+        System.out.println(telephoneBook.get("Петров"));
+
+        telephoneBook.getAll();
     }
 
 }

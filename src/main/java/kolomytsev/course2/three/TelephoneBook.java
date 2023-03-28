@@ -20,6 +20,9 @@ public class TelephoneBook {
     public Set<String> get(String name){
         return telephone.get(name);
     }
+    public void getAll(){
+        System.out.print(telephone);
+    }
 
     public void add(String name, String number){
         validate(number);
