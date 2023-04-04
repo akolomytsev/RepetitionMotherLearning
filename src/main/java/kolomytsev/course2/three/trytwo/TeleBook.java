@@ -5,20 +5,20 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class MyTelephoneBook {
-    private static MyTelephoneBook myTelephoneBook;
+public class TeleBook {
+    private static TeleBook instance;
 
     Map<String, Set<String>> telephone;
 
-    private MyTelephoneBook(){
+    private TeleBook(){
         telephone = new HashMap<>();
     }
 
-    public static MyTelephoneBook getTelephone(){
-        if (myTelephoneBook == null){
-            myTelephoneBook = new MyTelephoneBook();
+    public static TeleBook getInstance(){
+        if (instance == null){
+            instance = new TeleBook();
         }
-        return myTelephoneBook;
+        return instance;
     }
 
     public void getAll(){
@@ -30,7 +30,7 @@ public class MyTelephoneBook {
     }
 
     public void add(String name, String number){
-        if (!telephone.containsKey(name)) {
+        if (!telephone.containsKey(name)){
             telephone.put(name, new HashSet<>());
         }
         telephone.get(name).add(number);
