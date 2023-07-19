@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kolomytsev.course2.seven.client.ChatController">
+    <ListView fx:id="mainTextArea" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+    <Separator prefWidth="200.0" />
+    <HBox prefHeight="48.0" prefWidth="298.0">
+        <TextArea fx:id="messageField" prefHeight="48.0" prefWidth="250.0" promptText="Введите сообщение" HBox.hgrow="ALWAYS" />
+        <Button fx:id="input" mnemonicParsing="false" onAction="#sendMessage" prefHeight="60.0" prefWidth="48.0" text="Enter" />
+    </HBox>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+</VBox>
