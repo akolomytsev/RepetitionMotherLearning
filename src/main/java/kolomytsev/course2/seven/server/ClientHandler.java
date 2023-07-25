@@ -24,9 +24,11 @@ public class ClientHandler implements Runnable{
         try {
             out = new DataOutputStream(socket.getOutputStream());
             in = new DataInputStream(socket.getInputStream());
+            System.err.println("[DEBUG] client start processing");
             while (running){
                 String msg = in.readUTF();
                 System.out.println("[DEBUG] message from client " + msg);
+                server.broadCasteMessage(msg);
 
             }
         }catch (Exception e){
