@@ -8,11 +8,10 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Server {
     private static final int DEFAULT_PORT = 8189;
-    private ConcurrentLinkedQueue<ClientHandler> clients;
+    private final ConcurrentLinkedQueue<ClientHandler> clients;
 
     public Server(int port) {
         clients = new ConcurrentLinkedQueue<>();
-
         try(ServerSocket server = new ServerSocket(port);) {
             System.err.println("[DEBUG] server started on port: " + port) ;
             while (true){
@@ -21,7 +20,6 @@ public class Server {
                 ClientHandler handler = new ClientHandler(socket, this);
                 addClient(handler);
                 new Thread(handler).start();
-
             }
         }catch (Exception e){
             System.err.println("Server was broken");

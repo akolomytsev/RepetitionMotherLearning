@@ -17,12 +17,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>17.0.2</version>
+            <version>19.0.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>17.0.2</version>
+            <version>19.0.2.1</version>
         </dependency>
 
     </dependencies>
@@ -48,6 +48,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>com.example.online/com.example.online.ChatApplication</mainClass>
+                            <mainClass>kolomytsev.course2.seven.client/kolomytsev.course2.seven.client.ChatApp</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

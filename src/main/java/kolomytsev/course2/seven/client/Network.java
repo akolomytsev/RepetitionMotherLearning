@@ -1,4 +1,4 @@
 package kolomytsev.course2.seven.client;
 
-public class Jira {
+public class Network {
 }

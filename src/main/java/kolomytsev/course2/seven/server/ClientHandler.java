@@ -28,6 +28,7 @@ public class ClientHandler implements Runnable{
             while (running){
                 String msg = in.readUTF();
                 System.out.println("[DEBUG] message from client " + msg);
+                server.broadCasteMessage(msg);
 
             }
         }catch (Exception e){

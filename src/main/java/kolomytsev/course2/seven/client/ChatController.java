@@ -1,10 +1,12 @@
 package kolomytsev.course2.seven.client;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import kolomytsev.course2.seven.server.Server;
+import javafx.scene.control.TextField;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -16,19 +18,23 @@ import java.util.ResourceBundle;
 public class ChatController implements Initializable {
 
     private static final int PORT = 8189;
-    public TextArea messageField;
-    public ListView<String> mainTextArea;
+    public TextField input;// текст в малом окне окне
+    public ListView<String> listView; // текст в большом окне
     private DataInputStream in;
     private DataOutputStream out;
 
     @FXML
-    protected void sendMessage() throws IOException {
-//        String message = messageField.getText();
-//        mainTextArea.getItems().add(message);
-//
-        out.writeUTF(messageField.getText());
+    protected void sendMessage(ActionEvent actionEvent) throws IOException {
+        out.writeUTF(input.getText());
+
+        //String message = input.getText();
+        //listView.getItems().add(input.getText());
+
         out.flush();
+        input.clear();
     }
+
+
 
     @Override //здесь будем делать инициализационные действия
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,7 +46,11 @@ public class ChatController implements Initializable {
                 try {
                         while (true) {
                             String message = in.readUTF();
-                            mainTextArea.getItems().add(message);
+                            Platform.runLater(()->{
+                                listView.getItems().add(message);
+                            });
+
+                            //out.flush();
                         }
                     } catch (IOException e) {
                     System.err.println("Server was broken");
