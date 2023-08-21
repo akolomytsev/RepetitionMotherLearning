@@ -27,24 +27,29 @@ public class ClientHandler implements Runnable{
             System.err.println("[DEBUG] client start processing");
             while (running){
                 String msg = in.readUTF();
+                if (msg.equals("/quit")){
+                    out.writeUTF(msg);
+                }else {
+                    server.broadCasteMessage(msg);// здесь можно добавить ник и отправлять вместе с сообщением
+                }
                 System.out.println("[DEBUG] message from client " + msg);
-                server.broadCasteMessage(msg);
+
 
             }
         }catch (Exception e){
             System.err.println("Handler connection was broken");
-            server.removeClient(this);
+            server.removeClient(this); // отключение клиента
         }
 
     }
 
-    public void sendMessage (String message){
-        try {
+    public void sendMessage (String message) throws IOException {
+//        try {
             out.writeUTF(message);
             out.flush();
-        }catch (IOException e){
-            System.err.println("Connection was broken while write");
-        }
+//        }catch (IOException e){
+//            System.err.println("Connection was broken while write");
+//        }
 
     }
 }

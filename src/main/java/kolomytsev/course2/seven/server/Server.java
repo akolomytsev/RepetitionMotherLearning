@@ -2,13 +2,14 @@ package kolomytsev.course2.seven.server;
 
 import kolomytsev.course2.six.sInterneta.Client;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Server {
     private static final int DEFAULT_PORT = 8189;
-    private final ConcurrentLinkedQueue<ClientHandler> clients;
+    private final ConcurrentLinkedQueue<ClientHandler> clients; // это коллекция куда надо записывать клиентов
 
     public Server(int port) {
         clients = new ConcurrentLinkedQueue<>();
@@ -26,7 +27,7 @@ public class Server {
         }
     }
 
-    public void broadCasteMessage(String msg){
+    public void broadCasteMessage(String msg) throws IOException {
         for (ClientHandler client : clients) {
             client.sendMessage(msg);
             
