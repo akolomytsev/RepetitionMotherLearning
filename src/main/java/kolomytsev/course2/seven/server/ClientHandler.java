@@ -21,14 +21,14 @@ public class ClientHandler implements Runnable{
 
     @Override
     public void run() {
-        try {
-            out = new DataOutputStream(socket.getOutputStream());
-            in = new DataInputStream(socket.getInputStream());
-            System.err.println("[DEBUG] client start processing");
-            while (running){
-                String msg = in.readUTF();
-                if (msg.equals("/quit")){
-                    out.writeUTF(msg);
+        try { //Запустили  прослушку потока
+            out = new DataOutputStream(socket.getOutputStream()); // исходящий поток
+            in = new DataInputStream(socket.getInputStream()); // входящий поток
+            System.err.println("[DEBUG] client start processing"); // лог
+            while (running){ // если поток запущен
+                String msg = in.readUTF(); //пишем в поток
+                if (msg.equals("/quit")){ //волшебное слово для выхода
+                    out.writeUTF(msg); //Читаем из потока  и приобразуем в  UTF формат
                 }else {
                     server.broadCasteMessage(msg);// здесь можно добавить ник и отправлять вместе с сообщением
                 }
@@ -43,10 +43,10 @@ public class ClientHandler implements Runnable{
 
     }
 
-    public void sendMessage (String message) throws IOException {
+    public void sendMessage (String message) throws IOException { //метод для отправки сообщений всем
 //        try {
-            out.writeUTF(message);
-            out.flush();
+            out.writeUTF(message); //Записывает строку в базовый выходной поток, используя модифицированную кодировку UTF-8 машинно-независимым способом.
+            out.flush(); // Сбрасывает этот поток вывода данных. Это приводит к тому, что все буферизованные выходные байты записываются в поток.
 //        }catch (IOException e){
 //            System.err.println("Connection was broken while write");
 //        }
