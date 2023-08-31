@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class ChatApp extends Application {
+public class ChatApp extends Application { // создания вьюхи
     @Override
     public void start(Stage stage) throws Exception {
         Network network = Network.getInstance();
@@ -20,7 +20,7 @@ public class ChatApp extends Application {
         stage.show(); // отобразить чат
         stage.setOnCloseRequest(request ->{ //это вызывается когда нажимаем "окно закрыть"
                     try {
-                        network.writeMessage("/quit");
+                        network.writeMessage("/quit"); // или когда вводят это слово
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

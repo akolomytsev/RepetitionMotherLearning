@@ -37,13 +37,13 @@ public class Server { // класс
         System.err.println("[DEBUG] client added to broadcast queue");
     }
 
-    public void removeClient(ClientHandler clientHandler) {
+    public void removeClient(ClientHandler clientHandler) {// метод удаления метода из очереди
         clients.remove(clientHandler);
         System.err.println("[DEBUG] client removed to broadcast queue");
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { //надо объяснить
         int port = -1;
         if (args != null && args.length == 1) {
             port = Integer.parseInt(args[0]);
